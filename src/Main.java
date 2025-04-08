@@ -12,7 +12,10 @@ public class Main {
 
         System.out.println("Введите любое не отрицательное число!");
         int input = new Scanner(System.in).nextInt();
-        System.out.println(avg(input));
+        String inputProverka = String.valueOf(input);
+        if (!inputProverka.matches("//d+")){
+            System.out.println("Число введено не верно");
+        } else System.out.println(avg(input));
     }
 
     private static double avg(int num) {
