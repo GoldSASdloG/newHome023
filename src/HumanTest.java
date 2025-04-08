@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class HumanTest {
     private int age;
     private String name;
@@ -31,5 +33,18 @@ public class HumanTest {
 
     public void setRost(double rost) {
         this.rost = rost;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HumanTest humanTest = (HumanTest) o;
+        return age == humanTest.age && Double.compare(rost, humanTest.rost) == 0 && Objects.equals(name, humanTest.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(age, name, rost);
     }
 }
