@@ -11,14 +11,21 @@ public class Main {
 
 
         System.out.println("Введите любое не отрицательное число!");
-        int input = new Scanner(System.in).nextInt();
-        String inputProverka = String.valueOf(input);
-        if (!inputProverka.matches("//d+")){
-            System.out.println("Число введено не верно");
-        } else System.out.println(avg(input));
+        Scanner scanner = new Scanner(System.in);
+        if (!scanner.hasNextInt()){
+            System.out.println("Данные введены не корректно");
+            scanner.close();
+        } else {
+            int input = scanner.nextInt();
+            scanner.close();
+            String inputProverka = String.valueOf(input);
+            if (!inputProverka.matches("\\d+")) {
+                System.out.println("Число введено не верно");
+            } else avg(input);
+        }
     }
 
-    private static double avg(int num) {
+    private static void avg(int num) {
         String numString = String.valueOf(num);
         double sum = 0;
         for (int i = 0; i < numString.length(); i++) {
@@ -26,6 +33,6 @@ public class Main {
         }
         System.out.println("сумма чисел = " + sum);
         System.out.println("количество цифр в числе = " + numString.length());
-        return sum / numString.length();
+        System.out.println("Среднее число = " + sum / numString.length());
     }
 }
